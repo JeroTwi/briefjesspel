@@ -32,7 +32,7 @@ export default {
     return {
       showPaperUnfolded: false,
       paperUnfoldedNum: null,
-      // clicked: false,
+      clicked: true,
     }
   },
   components: {
@@ -64,16 +64,15 @@ export default {
   },
   methods: {
     requestNextEntry() {
-      // if (this.clicked) {
+      if (this.clicked) {
         this.showPaperUnfolded = false
         this.setRandomPaperUnfoldedNum()
         this.nextEntry()
-      // } else {
-      //   this.clicked = true
-      //   setTimeout(() => {
-      //     this.clicked = false
-      //   }, 500)
-      // }
+        this.clicked = false
+        setTimeout(() => {
+          this.clicked = true
+        }, 1500)
+      }
     },
     setRandomPaperUnfoldedNum() {
       let num
@@ -96,7 +95,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.topButton {x 10% 0px 10%;
+.topButton {
   display: inline-block;
   position: absolute;
   top: 15%;
@@ -105,11 +104,20 @@ export default {
   margin: 10px;
   color: black;
   border-radius: 15px;
-  border: 2px solid #B00000;
-  background: #B00000;
+  border: none;
+  background-color: #B00000;
   text-align: center;
   margin: 0px 10% 0px 10%;
   width: 80%;
+  box-shadow: 0 6px #666;
+}
+.topButton:hover {
+  background-color: #E61919;
+}
+.topButton:active {
+  background-color: #E61919;
+  box-shadow: 0 1px #444;
+  transform: translateY(4px);
 }
 .bottomButton {
   display: inline-block;
@@ -120,11 +128,20 @@ export default {
   margin: 10px;
   color: black;
   border-radius: 15px;
-  border: 2px solid green;
-  background: green;
+  border: none;
+  background-color: #3E8E41;
   text-align: center;
   margin: 0px 10% 0px 10%;
   width: 80%;
+  box-shadow: 0 6px #666;
+}
+.bottomButton:hover {
+  background-color: #4CAF50;
+}
+.bottomButton:active {
+  background-color: #4CAF50;
+  box-shadow: 0 1px #444;
+  transform: translateY(4px);
 }
 .swipeToV {
   display: block;
